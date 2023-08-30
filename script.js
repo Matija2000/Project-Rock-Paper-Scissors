@@ -1,6 +1,14 @@
-console.log("********************");
-console.log("********************");
-console.log("********************");
+const container = document.querySelector(".main");
+const rock = document.createElement("button");
+const paper = document.createElement("button");
+const scissors = document.createElement("button");
+rock.textContent = "rock";
+paper.textContent = "paper";
+scissors.textContent = "scissors";
+container.appendChild(rock);
+container.appendChild(paper);
+container.appendChild(scissors);
+const buttons = document.querySelectorAll("button");
 
 let playerPoints = 0;
 let computerPoints = 0;
@@ -15,11 +23,6 @@ function getComputerChoice() {
   } else {
     return "scissors";
   }
-}
-
-function getPlayerChoice() {
-  let playerChoice;
-  return prompt("Please choose between Rock, Paper or Scissors").toLowerCase();
 }
 
 function PlayRound(playerSelection, computerSelection) {
@@ -38,21 +41,6 @@ function PlayRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  const result = PlayRound(getPlayerChoice(), getComputerChoice());
-  console.log(result);
-  console.log(`Player: ${playerPoints}, Computer: ${computerPoints}`);
-}
-game();
-game();
-game();
-game();
-game();
-console.log("********************");
-if (playerPoints > computerPoints) {
-  console.log("Congratulations you won against AI!");
-} else if (playerPoints < computerPoints) {
-  console.log("You lost. Terminator is coming to get you!");
-} else {
-  ("Final result is a tie!");
-}
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {});
+});
