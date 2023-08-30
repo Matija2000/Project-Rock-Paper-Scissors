@@ -9,6 +9,8 @@ container.appendChild(rock);
 container.appendChild(paper);
 container.appendChild(scissors);
 const buttons = document.querySelectorAll("button");
+let results = document.createElement("div");
+container.appendChild(results);
 
 let playerPoints = 0;
 let computerPoints = 0;
@@ -40,7 +42,25 @@ function PlayRound(playerSelection, computerSelection) {
     return `You lose! ${computerSelection} beats ${playerSelection}`;
   }
 }
+let winner = document.querySelector(".winner");
+
+let section = document.querySelector(".section");
+let score = document.querySelector(".trackScore");
+score.textContent = `Player: ${playerPoints}, Computer: ${computerPoints}`;
+section.appendChild(score);
 
 buttons.forEach((button) => {
-  button.addEventListener("click", () => {});
+  button.addEventListener("click", () => {
+    if (playerPoints === 5 || computerPoints === 5) {
+      return;
+    }
+    results.textContent = PlayRound(button.textContent, getComputerChoice());
+    score.textContent = `Player: ${playerPoints}, Computer: ${computerPoints}`;
+
+    if (playerPoints === 5) {
+      winner.textContent = "You have won!";
+    } else if (computerPoints === 5) {
+      winner.textContent = "Computer has won!";
+    }
+  });
 });
